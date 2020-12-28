@@ -18,16 +18,20 @@
 
 package test.org.springdoc.api.app70.model;
 
-import java.time.Duration;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
-import test.org.springdoc.api.app70.customizer.CustomizedProperty;
-
 public class ApiType {
-	@CustomizedProperty
-	@Schema(description = "Test description")
-	@JsonProperty("someProperty")
-	private Duration someProperty;
+	private Long a;
+	private Long b;
+	private String c;
 
+	public Long getA() {
+		return this.a;
+	}
+
+	public Long getB() {
+		return this.b;
+	}
+
+	public String getC() {
+		return this.c;
+	}
 }

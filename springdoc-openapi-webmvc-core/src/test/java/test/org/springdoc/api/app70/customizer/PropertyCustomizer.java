@@ -36,20 +36,7 @@ import org.springframework.stereotype.Component;
 public class PropertyCustomizer implements org.springdoc.core.customizers.PropertyCustomizer {
 	@Override
 	public Schema customize(Schema property, AnnotatedType type) {
-		Annotation[] ctxAnnotations = type.getCtxAnnotations();
-		if (ctxAnnotations == null) {
-			return property;
-		}
-
-		Optional<CustomizedProperty> propertyAnnotation = Stream.of(ctxAnnotations)
-				.filter(CustomizedProperty.class::isInstance)
-				.findFirst()
-				.map(CustomizedProperty.class::cast);
-
-		JavaType javaType = Json.mapper().constructType(type.getType());
-		if (javaType.getRawClass().equals(Duration.class)) {
-			property = new StringSchema().format("duration").properties(Collections.emptyMap());
-		}
+		type.getParent().addRequiredItem(type.getPropertyName());
 		return property;
 	}
 }

@@ -44,15 +44,26 @@
       }
     }
   },
-  "components": {
-    "schemas": {
-      "ApiType": {
-        "type": "object",
-        "properties": {
-          "someProperty": {
-            "type": "string",
-            "properties": {},
-            "format": "duration"
+  "components":{
+    "schemas":{
+      "ApiType":{
+        "required":[
+          "a",
+          "b",
+          "c"
+        ],
+        "type":"object",
+        "properties":{
+          "a":{
+            "type":"integer",
+            "format":"int64"
+          },
+          "b":{
+            "type":"integer",
+            "format":"int64"
+          },
+          "c":{
+            "type":"string"
           }
         }
       }
